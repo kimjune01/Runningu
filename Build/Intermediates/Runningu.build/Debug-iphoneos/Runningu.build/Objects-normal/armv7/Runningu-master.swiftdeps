@@ -1,0 +1,13 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.37.3 clang-602.0.37)"
+options: "6f6a1e75cba67ff4f05b113bbbe7b7d9"
+inputs: 
+- "/Users/Camvy/Documents/Runningu/Runningu/ViewController.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/AppDelegate.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/ConfirmationNoInternet.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/StepperView.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/VelocityIndicator.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/UITouchDownGestureRecognizer.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/ContactsBarCurve.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/JumpIndicator.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/GapObstacle.swift"
+- "/Users/Camvy/Documents/Runningu/LevelIndicator.swift"

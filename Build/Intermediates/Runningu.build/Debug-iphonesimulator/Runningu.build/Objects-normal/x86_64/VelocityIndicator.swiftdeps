@@ -1,0 +1,47 @@
+### Swift dependencies file v0 ###
+provides:
+- "VelocityIndicator"
+nominals:
+- "C8Runningu17VelocityIndicator"
+class-members:
+- "setup"
+- "maxIntervals"
+- "displayLinkFired"
+- "tick"
+- "displayLink"
+top-level:
+- "IntegerLiteralType"
+- !private "NSRunLoop"
+- "CGRect"
+- "FloatLiteralType"
+- !private "fatalError"
+- "NSCoder"
+- !private "println"
+- !private "UIColor"
+- !private "NSDefaultRunLoopMode"
+- "UIView"
+- "CADisplayLink"
+- !private "StringLiteralType"
+member-access:
+- !private "Sb"
+- "CSo6UIView"
+- !private "V10ObjectiveC8Selector"
+- !private "CSo9NSRunLoop"
+- "CSo8NSObject"
+- "PSs9AnyObject"
+- !private "CSo7UIColor"
+- "CSo11UIResponder"
+- !private "VSs12StaticString"
+- "C8Runningu17VelocityIndicator"
+- !private "CSo13CADisplayLink"
+dynamic-lookup:
+cross-module:
+- "/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Swift.swiftmodule"
+- "/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/UIKit.swiftmodule"
+- "/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Foundation.swiftmodule"
+- "/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Darwin.swiftmodule"
+- "/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Dispatch.swiftmodule"
+- "/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Security.swiftmodule"
+- "/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/CoreImage.swiftmodule"

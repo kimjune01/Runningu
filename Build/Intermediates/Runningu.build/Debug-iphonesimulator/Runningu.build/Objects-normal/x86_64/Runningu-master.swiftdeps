@@ -1,0 +1,7 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.37.3 clang-602.0.37)"
+options: "f8f3a4bda56abaedbaf8b5e5f58b6f7d"
+inputs: 
+- !dirty "/Users/Camvy/Documents/Runningu/Runningu/ViewController.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/AppDelegate.swift"
+- !dirty "/Users/Camvy/Documents/Runningu/Runningu/VelocityIndicator.swift"
+- "/Users/Camvy/Documents/Runningu/Runningu/JumpIndicator.swift"
