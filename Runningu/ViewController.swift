@@ -26,9 +26,9 @@ class ViewController: UIViewController {
     didSet {
       switch lastDirection {
       case .Left:
-        stepperView.stepLeft()
+        println()
       case .Right:
-        stepperView.stepRight()
+        println()
       case .Unknown:
         stepperView.reset()
         
@@ -57,12 +57,18 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    testExSwift()
+    setupRunningu()
+    //mockAddObstacle()
   }
 
 
-  func testExSwift() {
-
+  func mockAddObstacle() {
+    let obstacleSize:CGFloat = 20
+    let obstacle = GapObstacle(frame: CGRectMake(0, 100, screenWidth, obstacleSize))
+    obstacles.append(obstacle)
+    obstacle.delegate = self
+    view.addSubview(obstacle)
+//    obstacle.moveDown()
     
   }
   
@@ -82,10 +88,12 @@ class ViewController: UIViewController {
     twoFingerTapRecognizer = UITapGestureRecognizer(target: self, action: "twoFingerTapped:")
     twoFingerTapRecognizer.numberOfTouchesRequired = 2
     twoFingerTapRecognizer.enabled = true
+    twoFingerTapRecognizer.delegate = self
     view.addGestureRecognizer(twoFingerTapRecognizer)
     
     swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
     swipeDownRecognizer.direction = .Down
+    swipeDownRecognizer.delegate = self
     view.addGestureRecognizer(swipeDownRecognizer)
 
   }
@@ -167,24 +175,26 @@ class ViewController: UIViewController {
     startLevels()
 
     let currentSwipePoint = recognizer.locationInView(view)
-    println("swipedDown! recognizer.location: \(recognizer.locationInView(view))")
-
+    
     var validSwipe = false
     if let swipePoint = lastSwipePoint {
       if lastDirection == .Left || lastDirection == .Unknown { //must go right
-        if swipePoint.x > currentSwipePoint.x { //to the right
+        if swipePoint.x < currentSwipePoint.x { //to the right
           validSwipe = true
           lastDirection = .Right
+          stepperView.stepRight(currentSwipePoint)
         }
       } else if lastDirection == .Right || lastDirection == .Unknown { //must go left
-        if swipePoint.x < currentSwipePoint.x {
+        if swipePoint.x > currentSwipePoint.x {
           validSwipe = true
           lastDirection = .Left
+          stepperView.stepLeft(currentSwipePoint)
         }
       }
     } else { //first time, do not validate.
       validSwipe = true
       lastDirection = .Unknown
+      stepperView.stepLeft(currentSwipePoint)
     }
     
     if validSwipe {
@@ -199,6 +209,7 @@ class ViewController: UIViewController {
   }
   
   func showGameOver() {
+    if !currentlyPlaying {return}
     view.userInteractionEnabled = false
     let gameOverView = UIView(frame: CGRectMake(screenWidth/7, screenHeight/7, screenWidth*5/7, screenHeight*5/7))
     gameOverView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.3)
@@ -273,11 +284,13 @@ class ViewController: UIViewController {
 
 extension ViewController: GapObstacleDelegate {
   func gapObstacleMovedOutOfScreen(obstacle: GapObstacle) {
-    if ( currentlyPlaying && obstacle.collision == true ){
-      showGameOver()
-    }
+    //Game does not end upon gap obstacle moving out of screen. Instead, touching down ends game.
+//    if ( currentlyPlaying && obstacle.collision == true ){
+//      showGameOver()
+//    }
     
   }
+  
 }
 
 extension ViewController: VelocityIndicatorDelegate {
@@ -293,6 +306,20 @@ extension ViewController: VelocityIndicatorDelegate {
   }
 }
 
+extension ViewController: UIGestureRecognizerDelegate {
+  func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+    // if touch.view == an obstacle then return false. else return true
+    var touchingAnObstacle = false
+    for eachObstacle in obstacles {
+      if touch.view == eachObstacle {
+        touchingAnObstacle = true
+        showGameOver()
+      }
+    }
+    
+    return !touchingAnObstacle
+  }
+}
 
 
 

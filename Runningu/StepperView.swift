@@ -16,7 +16,9 @@ class StepperView: UIView {
   
   let stepWidth:CGFloat = 40
   var originalFrame:CGRect!
-  
+  let leftFoot = UIImageView(image: UIImage(named: "leftFoot.png"))
+  let rightFoot = UIImageView(image: UIImage(named: "rightFoot.png"))
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     originalFrame = frame
@@ -28,7 +30,11 @@ class StepperView: UIView {
   }
   
   func setup() {
-    backgroundColor = UIColor.brownColor().colorWithAlphaComponent(0.6)
+    //backgroundColor = UIColor.brownColor().colorWithAlphaComponent(0.6)
+    addSubview(leftFoot)
+    leftFoot.hidden = true
+    addSubview(rightFoot)
+    rightFoot.hidden = true
     displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
     
   }
@@ -40,26 +46,24 @@ class StepperView: UIView {
     }
   }
   
-  func stepLeft() {
+  func stepLeft(point:CGPoint) {
     alpha = 1
-    frame = CGRectMake(frame.origin.x - stepWidth, frame.origin.y, frame.width, frame.height)
+    frame = CGRectMake(point.x - frame.width - 10, point.y, frame.width, frame.height)
+    leftFoot.hidden = false
+    rightFoot.hidden = true
   }
   
-  func stepRight() {
+  func stepRight(point:CGPoint) {
     alpha = 1
-    frame = CGRectMake(frame.origin.x + stepWidth, frame.origin.y, frame.width, frame.height)
+    frame = CGRectMake(point.x - frame.width - 10, point.y, frame.width, frame.height)
+    leftFoot.hidden = true
+    rightFoot.hidden = false
   }
   
   func reset() {
     frame = originalFrame
   }
   
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+  
 }
+

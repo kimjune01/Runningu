@@ -10,6 +10,7 @@ import UIKit
 
 protocol GapObstacleDelegate {
   func gapObstacleMovedOutOfScreen(obstacle: GapObstacle)
+  func gapObstacleTouchedDown(obstacle: GapObstacle)
 }
 
 var obstacleSpeed = 1
@@ -76,7 +77,6 @@ class GapObstacle: UIView {
         alpha -= 0.02
       }
     }
-    
     
   }
   
